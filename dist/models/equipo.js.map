@@ -1,0 +1,1 @@
+{"version":3,"file":"equipo.js","sourceRoot":"","sources":["../../models/equipo.ts"],"names":[],"mappings":";;;;;AAAA,yCAAsC;AACtC,kEAAkC;AAElC,MAAM,MAAM,GAAG,oBAAE,CAAC,MAAM,CAAC,QAAQ,EAAE;IACjC,MAAM,EAAE;QACN,IAAI,EAAE,qBAAS,CAAC,MAAM;KACvB;IACD,MAAM,EAAE;QACN,IAAI,EAAE,qBAAS,CAAC,OAAO;KACxB;CACF,CAAC,CAAC;AAEH,kBAAe,MAAM,CAAC"}

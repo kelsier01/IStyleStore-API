@@ -1,0 +1,1 @@
+{"version":3,"file":"pregunta.js","sourceRoot":"","sources":["../../models/pregunta.ts"],"names":[],"mappings":";;;;;AAAA,yCAAsC;AACtC,kEAAkC;AAElC,MAAM,QAAQ,GAAG,oBAAE,CAAC,MAAM,CAAC,WAAW,EAAE;IACtC,WAAW,EAAE;QACX,IAAI,EAAE,qBAAS,CAAC,MAAM;KACvB;IACD,MAAM,EAAC;QACL,IAAI,EAAE,qBAAS,CAAC,OAAO;KACxB;CACF,CAAC,CAAC;AAEH,kBAAe,QAAQ,CAAC"}
