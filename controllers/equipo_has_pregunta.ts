@@ -43,7 +43,6 @@ export const postEquipo_preguntas = async (req: Request, res: Response) =>{
 export const putEquipo_preguntas = async (req: Request, res: Response) => {
   const { id } = req.params;
   const { body } = req;
-
   try {
     const equipo_has_pregunta = await equipoPeguntas.findByPk(id);
     if (!equipo_has_pregunta) {
