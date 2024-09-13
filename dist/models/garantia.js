@@ -13,6 +13,18 @@ const Garantia = connection_1.default.define("garantias", {
     orden_id: {
         type: sequelize_1.DataTypes.STRING,
     },
+    subtotal: {
+        type: sequelize_1.DataTypes.INTEGER,
+    },
+    iva: {
+        type: sequelize_1.DataTypes.INTEGER,
+    },
+    descuento: {
+        type: sequelize_1.DataTypes.INTEGER,
+    },
+    total: {
+        type: sequelize_1.DataTypes.INTEGER,
+    }
 });
 Garantia.hasMany(revision_1.default, { foreignKey: "garantia_id" });
 exports.default = Garantia;

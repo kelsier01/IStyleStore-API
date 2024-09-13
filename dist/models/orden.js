@@ -49,6 +49,9 @@ const Orden = connection_1.default.define("Ordene", {
     estado: {
         type: sequelize_1.DataTypes.INTEGER,
     },
+    total_recepcion: {
+        type: sequelize_1.DataTypes.INTEGER,
+    },
     subtotal: {
         type: sequelize_1.DataTypes.INTEGER,
     },

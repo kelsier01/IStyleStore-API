@@ -45,6 +45,9 @@ const Orden = db.define("Ordene", {
   estado: {
     type: DataTypes.INTEGER,
   },
+  total_recepcion:{
+    type: DataTypes.INTEGER,
+  },
   subtotal: {
     type: DataTypes.INTEGER,
   },
