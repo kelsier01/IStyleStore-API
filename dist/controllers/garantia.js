@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postGarantia = void 0;
+exports.putGarantia = exports.postGarantia = void 0;
 const garantia_1 = __importDefault(require("../models/garantia"));
 const postGarantia = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -29,4 +29,25 @@ const postGarantia = (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 });
 exports.postGarantia = postGarantia;
+const putGarantia = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { body } = req;
+    try {
+        const garantia = yield garantia_1.default.findByPk(id);
+        if (!garantia) {
+            return res.status(404).json({
+                msg: "No existe una garantia con el id " + id,
+            });
+        }
+        yield garantia.update(body);
+        res.json(garantia);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: "Hable con el administrador",
+        });
+    }
+});
+exports.putGarantia = putGarantia;
 //# sourceMappingURL=garantia.js.map
