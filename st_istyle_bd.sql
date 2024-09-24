@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 13-09-2024 a las 21:02:12
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Servidor: localhost
+-- Tiempo de generación: 24-09-2024 a las 15:58:39
+-- Versión del servidor: 10.4.28-MariaDB
+-- Versión de PHP: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -95,7 +95,9 @@ INSERT INTO `clientes` (`id`, `nombre`, `run`, `direccion`, `ciudad`, `mail`, `f
 (54, 'Marcela', '767865760-9', NULL, NULL, 'bastian.fuentes.gaete@gmail.com', 4294967295, 1, NULL, NULL),
 (55, 'Bastian Fuentes', '211229330', NULL, NULL, 'bastian.fuentes.gaete@gmail', 935281542, NULL, NULL, NULL),
 (56, 'Bastian Fuentes', '21229330', NULL, NULL, 'bastian.fuentes.gaete@gmail', 10000003, NULL, NULL, NULL),
-(57, 'Ea perferendis paria', 'Duis', NULL, NULL, 'Maiores dolor distin', 37, NULL, NULL, NULL);
+(57, 'Ea perferendis paria', 'Duis', NULL, NULL, 'Maiores dolor distin', 37, NULL, NULL, NULL),
+(58, 'Nathaly Morales', '17.115.357-3', NULL, NULL, 'trimissa@gmail.com', 57262105, NULL, NULL, NULL),
+(59, 'Michael Aguirre', '16.467.901-2', NULL, NULL, 'michael.aguirre.saavedra@gmail.com', 57262105, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -569,12 +571,12 @@ INSERT INTO `formadepago` (`id`, `nombre`, `created_at`) VALUES
 
 CREATE TABLE `garantias` (
   `id` int(11) NOT NULL,
-  `fecha` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
   `orden_id` int(11) NOT NULL,
-  `subtotal` int(11) NOT NULL,
-  `iva` int(11) NOT NULL,
-  `descuento` int(11) NOT NULL,
-  `total` int(11) NOT NULL
+  `subtotal` int(11) NOT NULL DEFAULT 0,
+  `iva` int(11) NOT NULL DEFAULT 0,
+  `descuento` int(11) NOT NULL DEFAULT 0,
+  `total` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -590,7 +592,9 @@ INSERT INTO `garantias` (`id`, `fecha`, `orden_id`, `subtotal`, `iva`, `descuent
 (8, '2024-09-04 00:00:00', 14, 0, 0, 0, 0),
 (9, '2024-09-13 00:00:00', 14, 0, 0, 0, 0),
 (10, '2024-09-13 00:00:00', 18, 0, 0, 0, 0),
-(11, '2024-09-13 00:00:00', 7, 0, 0, 0, 0);
+(11, '2024-09-13 00:00:00', 7, 0, 0, 0, 0),
+(20, '2024-09-24 00:00:00', 20, 0, 0, 0, 0),
+(26, '2024-09-24 00:00:00', 22, 49990, 9498, 0, 49990);
 
 -- --------------------------------------------------------
 
@@ -644,7 +648,11 @@ INSERT INTO `ordenes` (`id`, `fecha_entrega`, `tecnico`, `cliente_id`, `fecha_sa
 (15, '2024-09-07', 'Michael Aguirre', 56, NULL, 1231231231, '8979879', NULL, 1, 2, 1, NULL, '1', 19990, 19990, 0, 0, 0, NULL, '2024-09-05 15:20:00', '2024-09-13 13:24:52'),
 (16, '2024-09-13', 'Michael Aguirre', 56, NULL, 1231231231, '89798798979', NULL, 1, 6, 1, NULL, '1', 19990, 19990, 0, 0, 0, NULL, '2024-09-06 13:53:00', '2024-09-13 13:24:52'),
 (17, '1973-09-24', 'Michael Aguirre', 57, NULL, 30, '987987987987987', NULL, 29, 96, 2, 'Fugiat minima quo v', '3', 0, 27, 5, 0, 27, NULL, '1991-06-12 01:46:00', '2024-09-13 15:03:08'),
-(18, '2024-09-13', 'Michael Aguirre', 56, NULL, 456456, '987987987987987', '1', 2, 20, 2, NULL, '4', 30000, 19990, 3798, 0, 19990, 10, '2024-09-13 14:28:00', '2024-09-13 14:55:31');
+(18, '2024-09-13', 'Michael Aguirre', 56, NULL, 456456, '987987987987987', '1', 2, 20, 2, NULL, '4', 30000, 19990, 3798, 0, 19990, 10, '2024-09-13 14:28:00', '2024-09-13 14:55:31'),
+(19, '2024-09-24', 'Michael Aguirre', 58, NULL, NULL, '0466', '1', 1, 119, 1, 'ssdddfgr', '5', 19990, 10000, 3796, 9990, 19990, NULL, '2024-09-24 03:59:00', '2024-09-24 04:50:01'),
+(20, '2024-09-24', 'Michael Aguirre', 58, NULL, NULL, '1234', '1', 1, 120, 2, 'eeed', '4', 29990, 10010, 3800, 9990, 20000, 20, '2024-09-24 04:51:00', '2024-09-24 04:56:38'),
+(21, '2024-09-26', 'Michael Aguirre', 59, NULL, NULL, 'kjn', NULL, 1, 18, 3, 'dv', '1', 19990, 19990, 0, 0, 0, NULL, '2024-09-24 05:07:00', '2024-09-24 05:07:38'),
+(22, '2024-09-24', 'Michael Aguirre', 58, NULL, NULL, NULL, NULL, 2, 20, 2, 'xx', '5', 19990, 40000, 9496, 9980, 49980, 26, '2024-09-24 05:20:00', '2024-09-24 06:07:06');
 
 -- --------------------------------------------------------
 
@@ -679,7 +687,11 @@ INSERT INTO `orden_has_servicios` (`id`, `orden_id`, `servicio_id`, `responsable
 (11, 14, 19, 'Michael Aguirre', NULL, '2024-09-05 03:07:00'),
 (12, 14, 18, 'Michael Aguirre', NULL, '2024-09-05 03:08:00'),
 (13, 14, 19, 'Michael Aguirre', 8, '2024-09-05 03:11:00'),
-(14, 18, 1, 'Michael Aguirre', NULL, '2024-09-13 14:31:00');
+(14, 18, 1, 'Michael Aguirre', NULL, '2024-09-13 14:31:00'),
+(15, 22, 2, 'Michael Aguirre', NULL, '2024-09-24 05:23:00'),
+(16, 22, 3, 'Michael Aguirre', NULL, '2024-09-24 05:23:00'),
+(17, 22, 6, 'Michael Aguirre', 26, '2024-09-24 06:07:00'),
+(18, 22, 18, 'Michael Aguirre', 26, '2024-09-24 06:07:00');
 
 -- --------------------------------------------------------
 
@@ -936,7 +948,57 @@ INSERT INTO `respuestas` (`id`, `pregunta_id`, `respuesta`, `orden_id`, `check_r
 (163, 3, NULL, 18, 1, '2024-09-13 14:29:18', '2024-09-13 14:29:18'),
 (164, 5, NULL, 18, 1, '2024-09-13 14:29:18', '2024-09-13 14:29:18'),
 (165, 6, NULL, 18, 1, '2024-09-13 14:29:18', '2024-09-13 14:29:18'),
-(166, 9, NULL, 18, 1, '2024-09-13 14:29:18', '2024-09-13 14:29:18');
+(166, 9, NULL, 18, 1, '2024-09-13 14:29:18', '2024-09-13 14:29:18'),
+(167, 1, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(168, 2, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(169, 3, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(170, 4, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(171, 5, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(172, 6, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(173, 7, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(174, 8, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(175, 9, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(176, 10, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(177, 11, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(178, 12, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(179, 13, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(180, 14, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(181, 15, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(182, 16, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(183, 17, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(184, 18, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(185, 33, NULL, 19, 1, '2024-09-24 04:01:30', '2024-09-24 04:01:30'),
+(186, 1, NULL, 20, 1, '2024-09-24 04:52:22', '2024-09-24 04:52:22'),
+(187, 3, NULL, 20, 1, '2024-09-24 04:52:22', '2024-09-24 04:52:22'),
+(188, 4, NULL, 20, 1, '2024-09-24 04:52:22', '2024-09-24 04:52:22'),
+(189, 5, NULL, 20, 1, '2024-09-24 04:52:22', '2024-09-24 04:52:22'),
+(190, 7, NULL, 20, 1, '2024-09-24 04:52:22', '2024-09-24 04:52:22'),
+(191, 9, NULL, 20, 1, '2024-09-24 04:52:22', '2024-09-24 04:52:22'),
+(192, 11, NULL, 20, 1, '2024-09-24 04:52:22', '2024-09-24 04:52:22'),
+(193, 13, NULL, 20, 1, '2024-09-24 04:52:22', '2024-09-24 04:52:22'),
+(194, 1, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(195, 2, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(196, 3, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(197, 4, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(198, 5, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(199, 6, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(200, 7, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(201, 8, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(202, 9, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(203, 10, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(204, 11, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(205, 12, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(206, 13, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(207, 15, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(208, 16, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(209, 17, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(210, 18, NULL, 21, 1, '2024-09-24 05:07:38', '2024-09-24 05:07:38'),
+(211, 1, NULL, 22, 1, '2024-09-24 05:20:53', '2024-09-24 05:20:53'),
+(212, 2, NULL, 22, 1, '2024-09-24 05:20:53', '2024-09-24 05:20:53'),
+(213, 3, NULL, 22, 1, '2024-09-24 05:20:53', '2024-09-24 05:20:53'),
+(214, 5, NULL, 22, 1, '2024-09-24 05:20:53', '2024-09-24 05:20:53'),
+(215, 6, NULL, 22, 1, '2024-09-24 05:20:53', '2024-09-24 05:20:53'),
+(216, 9, NULL, 22, 1, '2024-09-24 05:20:53', '2024-09-24 05:20:53');
 
 -- --------------------------------------------------------
 
@@ -1151,7 +1213,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `dispositivos`
@@ -1193,19 +1255,19 @@ ALTER TABLE `formadepago`
 -- AUTO_INCREMENT de la tabla `garantias`
 --
 ALTER TABLE `garantias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `ordenes`
 --
 ALTER TABLE `ordenes`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `orden_has_servicios`
 --
 ALTER TABLE `orden_has_servicios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
@@ -1223,7 +1285,7 @@ ALTER TABLE `preguntas`
 -- AUTO_INCREMENT de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=167;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=217;
 
 --
 -- AUTO_INCREMENT de la tabla `revisiones`
