@@ -12,8 +12,22 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.putGarantia = exports.postGarantia = void 0;
+exports.putGarantia = exports.postGarantia = exports.getGarantia = void 0;
 const garantia_1 = __importDefault(require("../models/garantia"));
+//Traer cliente por id
+const getGarantia = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const garantia = yield garantia_1.default.findByPk(id);
+    if (garantia) {
+        res.json(garantia);
+    }
+    else {
+        res.status(404).json({
+            msg: `No existe la garantia con la id ${id}`,
+        });
+    }
+});
+exports.getGarantia = getGarantia;
 const postGarantia = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         //Hay que eliminar esto

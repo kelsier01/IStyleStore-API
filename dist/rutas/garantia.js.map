@@ -1,1 +1,10 @@
-{"version":3,"file":"garantia.js","sourceRoot":"","sources":["../../rutas/garantia.ts"],"names":[],"mappings":";;AAAA,qCAAiC;AACjC,8DAAyD;AACzD,sDAAoE;AAEpE,MAAM,KAAK,GAAG,IAAA,gBAAM,GAAE,CAAC;AAEvB,KAAK,CAAC,IAAI,CAAC,GAAG,EAAE,CAAC,yBAAU,CAAC,EAAE,uBAAY,CAAC,CAAC;AAC5C,KAAK,CAAC,GAAG,CAAC,MAAM,EAAE,CAAC,yBAAU,CAAC,EAAE,sBAAW,CAAC,CAAC;AAE7C,kBAAe,KAAK,CAAC"}
+{
+    "version": 3,
+    "file": "garantia.js",
+    "sourceRoot": "",
+    "sources": [
+        "../../rutas/garantia.ts"
+    ],
+    "names": [],
+    "mappings": ";;AAAA,qCAAiC;AACjC,8DAAyD;AACzD,sDAIiC;AAEjC,MAAM,KAAK,GAAG,IAAA,gBAAM,GAAE,CAAC;AAEvB,KAAK,CAAC,GAAG,CAAC,MAAM,EAAE,CAAC,yBAAU,CAAC,EAAE,sBAAW,CAAC,CAAC;AAC7C,KAAK,CAAC,IAAI,CAAC,GAAG,EAAE,CAAC,yBAAU,CAAC,EAAE,uBAAY,CAAC,CAAC;AAC5C,KAAK,CAAC,GAAG,CAAC,MAAM,EAAE,CAAC,yBAAU,CAAC,EAAE,sBAAW,CAAC,CAAC;AAE7C,kBAAe,KAAK,CAAC"
+}
