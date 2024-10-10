@@ -12,11 +12,17 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getPreguntas = void 0;
+exports.postPreguntas = exports.getPreguntas = void 0;
 const pregunta_1 = __importDefault(require("../models/pregunta"));
 const getPreguntas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const preguntas = yield pregunta_1.default.findAll();
     res.json({ preguntas });
 });
 exports.getPreguntas = getPreguntas;
+const postPreguntas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { body } = req;
+    const nuevaPregunta = yield pregunta_1.default.create(body);
+    res.json({ nuevaPregunta });
+});
+exports.postPreguntas = postPreguntas;
 //# sourceMappingURL=preguntas.js.map
