@@ -25,16 +25,20 @@ const revision_1 = __importDefault(require("../models/revision"));
 const orden_has_servicios_1 = __importDefault(require("../models/orden_has_servicios"));
 const servicios_1 = __importDefault(require("../models/servicios"));
 const getOrdenes = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { limite = 10, desde = 0 } = req.query;
+    //const { limite = 10, desde = 0 } = req.query;
     const ordenes = yield orden_1.default.findAll({
         where: {
             estado: 5,
         },
         include: [estados_orden_1.default, cliente_1.default, equipo_1.default, modelo_1.default],
-        limit: Number(limite),
-        offset: Number(desde),
+        //limit: Number(limite),
+        //offset: Number(desde),
     });
-    const total = yield orden_1.default.count();
+    const total = yield orden_1.default.count({
+        where: {
+            estado: 5,
+        },
+    });
     res.json({ total, ordenes });
 });
 exports.getOrdenes = getOrdenes;

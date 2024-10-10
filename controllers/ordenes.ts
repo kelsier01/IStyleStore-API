@@ -12,16 +12,20 @@ import serviciosOrden from "../models/orden_has_servicios";
 import Servicios from "../models/servicios";
 
 export const getOrdenes = async (req: Request, res: Response) => {
-  const { limite = 10, desde = 0 } = req.query;
+  //const { limite = 10, desde = 0 } = req.query;
   const ordenes = await Orden.findAll({
     where: {
       estado: 5,
     },
     include: [estado_orden, Clientes, equipo, Modelo],
-    limit: Number(limite),
-    offset: Number(desde),
+    //limit: Number(limite),
+    //offset: Number(desde),
   });
-  const total = await Orden.count();
+  const total = await Orden.count({
+    where: {
+      estado: 5,
+    },
+  });
 
   res.json({ total, ordenes });
 };
