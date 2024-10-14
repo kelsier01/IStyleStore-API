@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.postPreguntas = exports.getPreguntas = void 0;
+exports.putPregunta = exports.postPreguntas = exports.getPreguntas = void 0;
 const pregunta_1 = __importDefault(require("../models/pregunta"));
 const getPreguntas = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const preguntas = yield pregunta_1.default.findAll();
@@ -25,4 +25,25 @@ const postPreguntas = (req, res) => __awaiter(void 0, void 0, void 0, function* 
     res.json({ nuevaPregunta });
 });
 exports.postPreguntas = postPreguntas;
+const putPregunta = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { id } = req.params;
+    const { body } = req;
+    try {
+        const editPregunta = yield pregunta_1.default.findByPk(id);
+        if (!editPregunta) {
+            return res.status(404).json({
+                msg: "No existe una pregunta con el id " + id,
+            });
+        }
+        yield editPregunta.update(body);
+        res.json(pregunta_1.default);
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json({
+            msg: "Hable con el administrador",
+        });
+    }
+});
+exports.putPregunta = putPregunta;
 //# sourceMappingURL=preguntas.js.map
